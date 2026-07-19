@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>eh hai
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Background gradasi bergerak yang gak polos */
+            background: linear-gradient(
+135deg,
+#ffdce8,
+#ffeaf5,
+#d8f1ff
+);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Biar tombol kaburnya gak bikin layar bisa di-scroll */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        
+        
+
+        /* Gambar GIF biar makin gemas */
+        .gif-container img {
+            width: 100%;
+            max-width: 180px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #d63031;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .kartu{
+    width:90%;
+    max-width:420px;
+    background:rgba(255,255,255,.75);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.4);
+border-radius:40px;
+    padding:35px 25px;
+    text-align:center;
+    position:relative;
+    z-index:10;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
+    border:1px solid rgba(255,255,255,.5);
+
+    animation:masuk .8s ease;
+}
+        p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .tombol-grup {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: relative; /* Penting untuk navigasi tombol */
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #btnMau {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            width: 120px;
+        }
+
+        #btnMau:hover {
+            background-color: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        #btnEnggak {
+            background-color: #f1f2f6;
+            color: #2f3542;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 120px;
+            /* Transisi dipersingkat biar pindahnya instan sebelum disentuh */
+            transition: top 0.1s, left 0.1s; 
+        }
+
+        /* Teks yang disembunyikan sampai dia klik Mau */
+        #pesanRahasia {
+            display: none;
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            animation: muncul 1s ease;
+        }
+
+        @keyframes muncul {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .hati {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            animation: terbang 4s linear forwards;
+            z-index: 9999;
+        }
+
+        @keyframes terbang {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-500px);
+                opacity: 0;
+            }
+        }
+
+        /* Pesan kecil */
+        .mini{
+            font-size:15px;
+            color:#888;
+            margin-bottom:10px;
+        }
+
+/* Emoji berkilau */
+.sparkle{
+    font-size:24px;
+    margin-bottom:10px;
+    animation:berkedip 1s infinite alternate;
+}
+
+@keyframes berkedip{
+    from{
+        opacity:.5;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.15);
+    }
+}
+
+/* GIF/Foto */
+.gif-container{
+    margin:15px 0 20px;
+}
+
+.gif-container img{
+    width:160px;
+    max-width:100%;
+    height:auto;
+
+    border-radius:25px;
+
+    border:5px solid white;
+
+    box-shadow:0 15px 35px rgba(255,105,180,.25);
+
+    animation:melayang 3s ease-in-out infinite;
+}
+
+
+@keyframes melayang{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* Animasi kartu */
+
+.kartu{
+
+    animation:masuk .8s ease;
+
+}
+
+@keyframes masuk{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    background:#ffe8f2;
+    color:#ff4d8d;
+    border-radius:30px;
+    font-size:14px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<body>
+
+    <div class="kartu" id="kartuUtama">
+        <p class="mini">💌 WKWKWWKKW</p>
+
+<div class="sparkle">
+    ✨ 💖 ✨
+</div>
+
+<div class="gif-container">
+    <img id="gambarGif" src="image.png" alt="Foto">
+</div>
+        
+        <h2 id="judulTeks"></h2>
+
+<p id="isiTeks"></p>
+        
+        <div class="tombol-grup" id="grupTombol">
+            <button id="btnMau" onclick="terimaKasih()">mau!</button>
+            <button id="btnEnggak">gamau</button>
+        </div>
+
+        <div id="pesanRahasia">
+           <br> eh dipencet loh sama dia!  
+           <br> makasih udah luangin waktu kamu loh!
+        </div>
+    </div>
+
+    <script>
+        const btnEnggak = document.getElementById("btnEnggak");
+        const kartu = document.getElementById("kartuUtama");
+        const kata = [
+            "gamau",
+            "eh 😝",
+            "gabisa!",
+            "wleee",
+            "jangan 😭",
+            "nyerah aja",
+            "hehe",
+            "coba lagi",
+            "😜"
+        ];
+
+        const judul = "hai,anna!"; 
+        const isi = "lagi sibuk gak?, coba pencet deh tombolnya 😊";
+
+ketik("judulTeks", judul, 80);
+
+setTimeout(()=>{
+    ketik("isiTeks", isi, 40);
+},1200);
+
+function ketik(id, teks, speed){
+
+    const el=document.getElementById(id);
+
+    let i=0;
+
+    const animasi=setInterval(()=>{
+
+        el.innerHTML+=teks.charAt(i);
+
+        i++;
+
+        if(i>=teks.length){
+
+            clearInterval(animasi);
+
+        }
+
+    },speed);
+
+}
+
+
+        // FUNGSI PRANK: Tombol pindah posisi secara acak
+        function kabur() {
+            const rect = kartu.getBoundingClientRect();
+
+            btnEnggak.style.position = "fixed";
+
+            const padding = 15;
+
+            const minX = rect.left + padding;
+            const maxX = rect.right - btnEnggak.offsetWidth - padding;
+
+            const minY = rect.top + padding;
+            const maxY = rect.bottom - btnEnggak.offsetHeight - padding;
+
+            const x = Math.random() * (maxX - minX) + minX;
+            const y = Math.random() * (maxY - minY) + minY;
+
+            btnEnggak.style.left = `${x}px`;
+            btnEnggak.style.top = `${y}px`;
+            btnEnggak.innerHTML = kata[Math.floor(Math.random() * kata.length)];
+        }
+
+        // SENSOR UNTUK PC (Mouse Hover)
+        btnEnggak.addEventListener("mouseover", kabur);
+
+        // SENSOR UNTUK HP (Layar Sentuh)
+        // touchstart mendeteksi jari SEBELUM klik terjadi, jadi tombol kabur sebelum layar merespon klik
+        btnEnggak.addEventListener("touchstart", function(e) {
+            e.preventDefault(); // Mencegah tap terdeteksi sebagai klik
+            kabur();
+        });
+
+        // FUNGSI KALAU DIA KLIK "MAU"
+        function terimaKasih() {
+            // Ganti GIF jadi beruang pelukan
+            document.getElementById("gambarGif").src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
+            
+            // Ganti Teksnya
+            document.getElementById("judulTeks").innerHTML = "hehe, makasih! 🥰";
+            document.getElementById("isiTeks").innerHTML = "kan gak bisa nolak wleee~";
+            
+            // Sembunyikan tombol biar rapi
+            document.getElementById("grupTombol").style.display = "none";
+            
+            // Munculkan pesan rahasia
+            document.getElementById("pesanRahasia").style.display = "block";
+        }
+    </script>
+</body>
+</html>
