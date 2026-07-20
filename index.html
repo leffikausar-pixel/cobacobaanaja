@@ -14,7 +14,6 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Background gradasi bergerak yang gak polos */
             background: linear-gradient(
 135deg,
 #ffdce8,
@@ -273,6 +272,9 @@ border-radius:40px;
            <br> eh dipencet loh sama dia!  
            <br> makasih udah luangin waktu kamu loh!
         </div>
+        <audio id="bgMusic" loop>
+    <source src="lagu1.mp3" type="audio/mpeg">
+</audio>
     </div>
 
     <script>
@@ -356,6 +358,10 @@ function ketik(id, teks, speed){
 
         // FUNGSI KALAU DIA KLIK "MAU"
         function terimaKasih() {
+            const music = document.getElementById("bgMusic");
+
+music.volume = 0.3;
+music.play();
             // Ganti GIF jadi beruang pelukan
             document.getElementById("gambarGif").src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
             
@@ -368,6 +374,7 @@ function ketik(id, teks, speed){
             
             // Munculkan pesan rahasia
             document.getElementById("pesanRahasia").style.display = "block";
+            
         }
     </script>
 </body>
